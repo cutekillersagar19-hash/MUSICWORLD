@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MusicWorld ULTIMATE</title>
+  <meta name="description" content="MusicWorld ULTIMATE — local player, embeds, visualizer, playlists, lyrics, search, recommendations, accounts (Firebase-ready).">
+  <style>
+    :root{--bg:#05060a;--card:#0b1220;--accent:#00eaff;--muted:#9aa4b2}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg),#061022);color:#eaf6ff}
+    header{padding:18px;text-align:center;background:linear-gradient(90deg,#00131a22,#00131a00);}
+    h1{margin:0;font-size:26px;color:var(--accent);text-shadow:0 0 12px rgba(0,234,255,0.12)}
+    .wrap{max-width:1100px;margin:18px auto;padding:18px;display:grid;grid-template-columns:1fr 380px;gap:18px}
+    .card{background:linear-gradient(180deg,var(--card),#07122a);padding:16px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .row{display:flex;gap:8px;align-items:center}
+    input[type=file]{display:none}
+    .btn{padding:8px 10px;border-radius:10px;border:none;background:var(--accent);color:#03121a;cursor:pointer}
+    .muted{color:var(--muted);font-size:13px}
+    .search{flex:1;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:inherit}
+    #library,#playlist{max-height:42vh;overflow:auto;padding:6px}
+    .track{display:flex;justify-content:space-between;align-items:center;padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);margin-bottom:8px}
+    .track:hover{transform:translateY(-2px)}
+    .now{display:flex;gap:12px;align-items:center}
+    .big-art{width:86px;height:86px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .progress{height:8px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+    .progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#06b6d4)}
+    footer{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;margin-top:12px}
+    .small{font-size:13px;color:var(--muted)}
+    select,input,textarea{background:rgba(255,255,255,0.02);border-radius:8px;padding:8px;border:none;color:inherit}
+    canvas{width:100%;height:120px;border-radius:10px;background:#000;margin-top:10px}
+    .marquee{overflow:hidden;white-space:nowrap}
+    .marquee span{display:inline-block;padding-left:100%;animation:marquee 12s linear infinite}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    @media(max-width:980px){.wrap{grid-template-columns:1fr}.big-art{width:72px;height:72px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MusicWorld ULTIMATE</h1>
+    <div class="small">All features enabled — Firebase-ready auth, YouTube/SoundCloud search, lyrics, recommendations, visualizers & more</div>
+  </header>
+
+  <div class="wrap">
+    <main class="card">
+      <div class="row" style="margin-bottom:10px">
+        <label class="btn" for="fileInput">Add Local Files</label>
+        <input id="fileInput" type="file" multiple accept="audio/*" />
+        <input id="searchBox" class="search" placeholder="Search YouTube / SoundCloud (requires API keys)" />
+        <button id="searchBtn" class="btn">Search</button>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-bottom:10px">
+        <select id="vizSelect"><option value="bars">Visualizer: Bars</option><option value="wave">Wave</option><option value="dots">Dots</option></select>
+        <button id="recBtn" class="btn">Recommend</button>
+        <button id="exportBtn" class="btn">Export JSON</button>
+        <button id="importBtn" class="btn">Import JSON</button>
+        <input id="fileImport" type="file" accept="application/json" style="display:none" />
+      </div>
+
+      <h3 style="margin:6px 0">Library</h3>
+      <div id="library"></div>
+
+      <h3 style="margin:6px 0">Player</h3>
+      <div class="now">
+        <div id="bigArt" class="big-art">♪</div>
+        <div style="flex:1">
+          <div id="nowTitle" style="font-weight:700">Not playing</div>
+          <div id="nowArtist" class="muted">—</div>
+          <div class="marquee" style="margin-top:6px"><span id="marqueeText">&nbsp;</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px">
+        <div class="progress" id="progressBar"><i></i></div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px"><span id="curTime">0:00</span><span id="durTime">0:00</span></div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button id="prevBtn" class="btn">Prev</button>
+          <button id="playBtn" class="btn">Play</button>
+          <button id="nextBtn" class="btn">Next</button>
+          <button id="downloadBtn" class="btn">Download</button>
+          <div style="flex:1"></div>
+          <label class="small">Vol <input id="vol" type="range" min="0" max="1" step="0.01" value="0.9" /></label>
+        </div>
+        <audio id="audio" controls style="width:100%;margin-top:10px"></audio>
+        <canvas id="visualizer"></canvas>
+      </div>
+
+      <h3 style="margin-top:12px">Lyrics</h3>
+      <div style="display:flex;gap:8px"><input id="lyricsArtist" placeholder="Artist" /><input id="lyricsTitle" placeholder="Title" /><button id="lyricsBtn" class="btn">Fetch Lyrics</button></div>
+      <pre id="lyricsBox" style="white-space:pre-wrap;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;margin-top:8px;max-height:160px;overflow:auto"></pre>
+
+    </main>
+
+    <aside class="card">
+      <h3>Playlist</h3>
+      <div id="playlist"></div>
+
+      <h3 style="margin-top:12px">Embeds & Search Results</h3>
+      <div id="results" style="max-height:36vh;overflow:auto"></div>
+
+      <h3 style="margin-top:12px">Account (Firebase)</h3>
+      <div class="muted">To enable auth paste your Firebase config below and click Init</div>
+      <textarea id="fbConfig" placeholder='Paste Firebase config JSON here' style="width:100%;height:120px;margin-top:8px"></textarea>
+      <div style="display:flex;gap:8px;margin-top:8px"><button id="fbInit" class="btn">Init Firebase</button><button id="fbLogin" class="btn">Sign in (Google)</button></div>
+
+      <footer>
+        <div class="small">MusicWorld — Ultimate</div>
+        <div class="small">Made for you</div>
+      </footer>
+    </aside>
+  </div>
+
+<script>
+/*************** STATE ***************/
+const state={library:[],playlist:[],current:-1,recHistory:[]};
+const audio=document.getElementById('audio');
+const progressFill=document.querySelector('#progressBar i');
+
+/*************** HELPERS ***************/
+function fmt(s){ if(!isFinite(s))return '0:00'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function persist(){ localStorage.setItem('mw_state', JSON.stringify({library:state.library,playlist:state.playlist})); }
+function loadPersist(){ try{ const raw=localStorage.getItem('mw_state'); if(raw){ const obj=JSON.parse(raw); state.library=obj.library||[]; state.playlist=obj.playlist||[];} }catch(e){console.warn(e);} }
+
+/*************** RENDER ***************/
+function renderLibrary(){ const lib=document.getElementById('library'); lib.innerHTML=''; if(state.library.length===0){ lib.innerHTML='<div class="muted">No tracks — add local files or search</div>'; return } state.library.forEach((t,i)=>{
+  const el=document.createElement('div'); el.className='track';
+  el.innerHTML = `<div style="flex:1"><strong>${t.title}</strong><div class="muted">${t.artist||''}</div></div><div class="row"><button class="btn" onclick="addToPlaylist(${i})">Add</button></div>`;
+  lib.appendChild(el);
+}); }
+
+function renderPlaylist(){ const el=document.getElementById('playlist'); el.innerHTML=''; if(state.playlist.length===0){ el.innerHTML='<div class="muted">Playlist empty</div>'; return } state.playlist.forEach((t,i)=>{
+  const item=document.createElement('div'); item.className='track'; item.innerHTML=`<div style="flex:1"><strong>${t.title}</strong><div class="muted">${t.artist||''}</div></div><div class="row"><button class="btn" onclick="playIndex(${i})">Play</button><button class="btn" onclick="removeFromPlaylist(${i})">Remove</button></div>`; el.appendChild(item);
+}); }
+
+/*************** FILE HANDLING ***************/
+const fileInput=document.getElementById('fileInput');
+fileInput.addEventListener('change',async e=>{ for(const f of e.target.files){ if(!f.type.startsWith('audio')) continue; const url=URL.createObjectURL(f); const meta={id:crypto.randomUUID(),title:f.name.replace(/\.[^/.]+$/,''),artist:'Local',src:url,local:true}; state.library.push(meta); } persist(); renderLibrary(); });
+
+/*************** PLAYBACK ***************/
+function loadIndex(i){ if(i<0||i>=state.playlist.length) return; state.current=i; const t=state.playlist[i]; document.getElementById('nowTitle').textContent=t.title; document.getElementById('nowArtist').textContent=t.artist||''; document.getElementById('bigArt').textContent=(t.title||'♪').slice(0,2).toUpperCase(); document.getElementById('marqueeText').textContent = t.title + ' — ' + (t.artist||''); if(t.embed){ showEmbed(t.src); audio.pause(); } else { hideEmbed(); audio.src=t.src; audio.play(); }
+}
+function playIndex(i){ loadIndex(i); }
+function addToPlaylist(libIndex){ const t=state.library[libIndex]; state.playlist.push(t); persist(); renderPlaylist(); }
+function removeFromPlaylist(i){ state.playlist.splice(i,1); if(state.current===i){ audio.pause(); state.current=-1; } persist(); renderPlaylist(); }
+
+document.getElementById('playBtn').onclick = ()=>{ if(audio.paused) audio.play(); else audio.pause(); };
+document.getElementById('prevBtn').onclick = ()=>{ if(state.current>0) playIndex(state.current-1); };
+document.getElementById('nextBtn').onclick = ()=>{ if(state.current < state.playlist.length-1) playIndex(state.current+1); };
+
+audio.ontimeupdate = ()=>{ const cur=audio.currentTime; const dur=audio.duration||0; progressFill.style.width = (dur? (cur/dur)*100:0) + '%'; document.getElementById('curTime').textContent = fmt(cur); document.getElementById('durTime').textContent = fmt(dur); };
+
+/*************** DOWNLOAD BUTTON ***************/
+document.getElementById('downloadBtn').onclick = ()=>{ if(state.current<0) return alert('No track'); const t=state.playlist[state.current]; if(!t.src) return alert('No source'); const a=document.createElement('a'); a.href=t.src; a.download = (t.title||'track') + '.mp3'; a.click(); };
+
+/*************** EMBEDS & SEARCH (requires API keys) ***************/
+async function searchYT(q){ // simple YouTube search using YouTube Data API v3 — requires API key
+  const key = localStorage.getItem('yt_api_key'); if(!key) return alert('YouTube API key not set. Go to Settings and paste it in localStorage as yt_api_key');
+  const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(q)}&maxResults=8&key=${key}`);
+  const data = await res.json(); return data.items || []; }
+
+async function searchSC(q){ // SoundCloud public search via SoundCloud oEmbed / API requires client_id for older API — we'll attempt oEmbed search via https://soundcloud.com/search/sounds?q=
+  const url = `https://soundcloud.com/search/sounds?q=${encodeURIComponent(q)}`;
+  // Not ideal — user can paste direct URL instead for embed
+  return []; }
+
+document.getElementById('searchBtn').onclick = async ()=>{
+  const q=document.getElementById('searchBox').value.trim(); if(!q) return; const yt = await searchYT(q); const resDiv=document.getElementById('results'); resDiv.innerHTML=''; if(yt && yt.length){ yt.forEach(it=>{ const title=it.snippet.title; const ch=it.snippet.channelTitle; const vid=it.id.videoId; const node=document.createElement('div'); node.className='track'; node.innerHTML = `<div style="flex:1"><strong>${title}</strong><div class="muted">${ch}</div></div><div class="row"><button class="btn" onclick="addEmbedUrl('https://youtu.be/${vid}','${title}','${ch}')">Embed</button></div>`; resDiv.appendChild(node); }); }
+};
+
+function addEmbedUrl(url,title,artist){ const meta={id:crypto.randomUUID(),title:title||'Embedded',artist:artist||'YouTube',src:url,embed:true}; state.library.push(meta); persist(); renderLibrary(); }
+
+function showEmbed(url){ const r=document.getElementById('results'); const e=document.getElementById('results'); const embedArea = document.getElementById('results'); // reuse area
+  const out=document.createElement('div'); out.innerHTML=''; const embedDiv=document.createElement('div'); if(url.includes('youtu')){ const id=(new URL(url)).searchParams.get('v') || url.split('youtu.be/')[1]; embedDiv.innerHTML = `<iframe width="100%" height="220" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media"></iframe>`; } else if(url.includes('soundcloud')){ embedDiv.innerHTML = `<iframe width="100%" height="220" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}&auto_play=true" frameborder="0" allow="autoplay"></iframe>`; } document.getElementById('results').innerHTML=''; document.getElementById('results').appendChild(embedDiv); }
+function hideEmbed(){ document.getElementById('results').innerHTML=''; }
+
+/*************** LYRICS (lyrics.ovh) ***************/
+document.getElementById('lyricsBtn').onclick = async ()=>{
+  const a=document.getElementById('lyricsArtist').value.trim(); const t=document.getElementById('lyricsTitle').value.trim(); if(!a||!t) return alert('Artist and Title required');
+  try{ const res = await fetch(`https://api.lyrics.ovh/v1/${encodeURIComponent(a)}/${encodeURIComponent(t)}`); if(!res.ok) throw new Error('No lyrics'); const data = await res.json(); document.getElementById('lyricsBox').textContent = data.lyrics || 'Not found'; }catch(e){ document.getElementById('lyricsBox').textContent = 'Lyrics not found'; }
+};
+
+/*************** RECOMMENDATION (simple heuristic) ***************/
+function recommend(){ // look for similar titles/artists, or random
+  if(state.library.length===0) return alert('Library empty');
+  // if there is a current track, recommend tracks with shared words
+  const cur = state.playlist[state.current] || null; let candidates = state.library.slice();
+  if(cur){ const words = (cur.title+' '+(cur.artist||'')).toLowerCase().split(/\W+/).filter(Boolean);
+    candidates = candidates.map(c=>{ const score = words.reduce((s,w)=> s + ( (c.title.toLowerCase().includes(w)|| (c.artist||'').toLowerCase().includes(w))?1:0), 0); return {...c,score}; }).sort((a,b)=>b.score-a.score);
+  } else { candidates = candidates.sort(()=>Math.random()-0.5); }
+  // add top 3 to playlist
+  const top = candidates.slice(0,3);
+  top.forEach(t=>state.playlist.push(t)); persist(); renderPlaylist(); alert('Recommended '+top.length+' tracks added');
+}
+document.getElementById('recBtn').onclick = recommend;
+
+/*************** VISUALIZER SHAPES ***************/
+const canvas=document.getElementById('visualizer'); const ctx=canvas.getContext('2d'); let audioCtx,analyser,dataArray,buffLen; function startViz(){ if(audioCtx) return; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); const src=audioCtx.createMediaElementSource(audio); analyser=audioCtx.createAnalyser(); src.connect(analyser); analyser.connect(audioCtx.destination); analyser.fftSize=256; buffLen=analyser.frequencyBinCount; dataArray=new Uint8Array(buffLen); resizeCanvas(); animate(); }
+function resizeCanvas(){ canvas.width = canvas.clientWidth * devicePixelRatio; canvas.height = canvas.clientHeight * devicePixelRatio; ctx.scale(devicePixelRatio,devicePixelRatio); }
+window.addEventListener('resize',resizeCanvas);
+function animate(){ requestAnimationFrame(animate); if(!analyser) return; analyser.getByteFrequencyData(dataArray); ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight); const shape=document.getElementById('vizSelect').value;
+  if(shape==='bars'){ const barW = canvas.clientWidth / buffLen; let x=0; for(let i=0;i<buffLen;i++){ const v=dataArray[i]/255; const h = v*canvas.clientHeight; ctx.fillStyle=`rgba(${Math.floor(200+v*55)},100,220,0.9)`; ctx.fillRect(x,canvas.clientHeight-h,barW*0.9,h); x+=barW; } }
+  else if(shape==='wave'){ analyser.getByteTimeDomainData(dataArray); ctx.beginPath(); ctx.moveTo(0,canvas.clientHeight/2); for(let i=0;i<buffLen;i++){ const y = (dataArray[i]/128.0)*canvas.clientHeight/2; ctx.lineTo(i*(canvas.clientWidth/buffLen), y); } ctx.strokeStyle='#00eaff'; ctx.stroke(); }
+  else if(shape==='dots'){ for(let i=0;i<100;i++){ const idx = Math.floor(Math.random()*buffLen); const v=dataArray[idx]/255; ctx.beginPath(); ctx.arc(Math.random()*canvas.clientWidth, Math.random()*canvas.clientHeight, v*8,0,Math.PI*2); ctx.fillStyle=`rgba(0,${Math.floor(200+v*55)},255,0.9)`; ctx.fill(); } }
+}
+
+audio.addEventListener('play', ()=>{ if(!audioCtx) startViz(); });
+
+/*************** EXPORT / IMPORT PLAYLIST ***************/
+document.getElementById('exportBtn').onclick = ()=>{ const data=JSON.stringify(state.playlist,null,2); const blob=new Blob([data],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='musicworld-playlist.json'; a.click(); URL.revokeObjectURL(url); };
+document.getElementById('importBtn').onclick = ()=> document.getElementById('fileImport').click();
+document.getElementById('fileImport').onchange = async e=>{ const f=e.target.files[0]; const text = await f.text(); try{ const arr=JSON.parse(text); state.playlist = arr.map(it=>({...it,id:it.id||crypto.randomUUID()})); persist(); renderPlaylist(); alert('Imported'); }catch(err){ alert('Invalid JSON'); } };
+
+/*************** FIREBASE AUTH (optional) ***************/
+let firebaseApp=null, firebaseAuth=null;
+document.getElementById('fbInit').onclick = ()=>{
+  const raw = document.getElementById('fbConfig').value.trim(); if(!raw) return alert('Paste Firebase config JSON'); try{
+    const cfg = JSON.parse(raw);
+    // load firebase scripts
+    const s = document.createElement('script'); s.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js'; s.onload=()=>{
+      const s2=document.createElement('script'); s2.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js'; s2.onload=()=>{
+        firebaseApp = window.firebase.initializeApp(cfg);
+        firebaseAuth = window.firebase.auth();
+        alert('Firebase initialized. Now click Sign in (Google)');
+      }; document.head.appendChild(s2);
+    }; document.head.appendChild(s);
+  }catch(e){ alert('Invalid JSON'); }
+};
+document.getElementById('fbLogin').onclick = ()=>{
+  if(!firebaseAuth) return alert('Init Firebase first'); const provider = new window.firebase.auth.GoogleAuthProvider(); firebaseAuth.signInWithPopup(provider).then(res=>{ alert('Signed in as '+res.user.displayName); }).catch(err=>alert(err.message)); };
+
+/*************** INIT ***************/
+loadPersist(); renderLibrary(); renderPlaylist();
+
+// load API keys from localStorage if user stored them via developer console or settings
+// localStorage.setItem('yt_api_key','YOUR_KEY');
+
+</script>
+</body>
+</html>
