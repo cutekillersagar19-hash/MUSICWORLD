@@ -1,108 +1,378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MusicWorld — Latest Bollywood Songs (School Project)</title>
-
-  <style>
-    body { font-family: Arial, sans-serif; background:#f4f4f9; padding:20px; }
-    h1 { text-align:center; margin-bottom:10px; }
-    .subtitle { text-align:center; color:#444; margin-bottom:20px; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
-    .card { background:white; padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
-    .card h3 { margin-top:0; }
-    .video-wrap { position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; }
-    .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
-    .listbox { max-height:380px; overflow:auto; padding-right:10px; }
-    footer { text-align:center; margin-top:25px; color:#444; }
-    .note { font-size:13px; color:#666; margin-top:8px; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MusicWorld - Bollywood Songs</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>🎵 MusicWorld — Latest Bollywood Songs</h1>
-  <div class="subtitle">School Project — Official YouTube + Spotify Embeds (Safe & Legal)</div>
+<h1 style="text-align:center;">🎵 MusicWorld - Top Bollywood Songs</h1>
 
-  <div class="grid">
+<div class="songs">
 
-    <div class="card">
-      <h3>YouTube Latest Hindi / Bollywood Playlist</h3>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PL3oW2tjiIxvTSdJ4zqjL9dijeZ0LjcuGS" allowfullscreen></iframe>
-      </div>
-      <p class="note">Yeh playlist auto-update hoti rehti hai. Latest Bollywood songs milte rahenge.</p>
-    </div>
+<!-- 1 -->
+<div class="card">
+<h3>1. Kesariya</h3>
+<iframe src="https://www.youtube.com/embed/BddP6PYo2gs" allowfullscreen></iframe>
+</div>
 
-    <div class="card">
-      <h3>YouTube New Hindi Releases</h3>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLvWfwCPLBQ5-XQreomW-UbYLnyWS5MNbt" allowfullscreen></iframe>
-      </div>
-      <p class="note">Newly released Hindi songs.</p>
-    </div>
+<!-- 2 -->
+<div class="card">
+<h3>2. Raatan Lambiyan</h3>
+<iframe src="https://www.youtube.com/embed/gvyUuxdRdR4" allowfullscreen></iframe>
+</div>
 
-    <div class="card">
-      <h3>Hindi Hits 2025 (Trending)</h3>
-      <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLw-VjHDlEOgvh3fIZ8VSWWE09eYGO8uFI" allowfullscreen></iframe>
-      </div>
-      <p class="note">2025 ke trending Bollywood songs.</p>
-    </div>
+<!-- 3 -->
+<div class="card">
+<h3>3. Apna Bana Le</h3>
+<iframe src="https://www.youtube.com/embed/2kJQyJcQ7gI" allowfullscreen></iframe>
+</div>
 
-    <div class="card">
-      <h3>Top Hindi Songs (Spotify)</h3>
-      <div class="video-wrap">
-        <iframe src="https://open.spotify.com/embed/playlist/3bDJLJzvUBxBV4C7mezz6p" allowfullscreen></iframe>
-      </div>
-      <p class="note">Spotify Top Hindi 50 Playlist.</p>
-    </div>
+<!-- 4 -->
+<div class="card">
+<h3>4. Tum Hi Ho</h3>
+<iframe src="https://www.youtube.com/embed/Umqb9KENgmk" allowfullscreen></iframe>
+</div>
 
-  </div>
+<!-- 5 -->
+<div class="card">
+<h3>5. Tera Ban Jaunga</h3>
+<iframe src="https://www.youtube.com/embed/IyFZznAk69U" allowfullscreen></iframe>
+</div>
 
-  <div class="card" style="margin-top:25px;">
-    <h3>100 Latest Bollywood Song Titles</h3>
-    <p class="note">Yeh 100-song list school submission ke liye hai. Playback upar wale players se hoga (legal).</p>
+<!-- 6 -->
+<div class="card">
+<h3>6. Khairiyat</h3>
+<iframe src="https://www.youtube.com/embed/hoNb6HuNmU0" allowfullscreen></iframe>
+</div>
 
-    <div class="listbox">
-      <ol id="songList"></ol>
-    </div>
-  </div>
+<!-- 7 -->
+<div class="card">
+<h3>7. Channa Mereya</h3>
+<iframe src="https://www.youtube.com/embed/eC-F_VZ2T1c" allowfullscreen></iframe>
+</div>
 
-  <footer>
-    Made for School Project • Updated on: <span id="date"></span>
-  </footer>
+<!-- 8 -->
+<div class="card">
+<h3>8. Shayad</h3>
+<iframe src="https://www.youtube.com/embed/AoQ4AtsFWVM" allowfullscreen></iframe>
+</div>
 
-  <script>
-    document.getElementById("date").innerText = new Date().toLocaleDateString();
-    const songs = [
-      "Bijuria","Jhoom Sharaabi","3 Shaukk","Raat Bhar","Tu Hi Meri Bandagi",
-      "Teri Baaton Mein Aisa Uljha Jiya","Akhiyaan Gulaab","Heer Aasmani",
-      "Laal Peeli Akhiyaan","Vibe Undi","Jaithraya","Kanha",
-      "Aaji Borosharo Raate","Hori Mon Mojaye","Bhaishya Zaibo","Bijuriya (Single)",
-      "Jhoom (Single)","Tum Se","Bekaar Dil","Tere Ishq Mein","Chikiri Chikiri",
-      "Saiyaara","Pardesiya","Dhun","Tum Ho Toh","Raat Ka Nasha","Dil Ke Aaine",
-      "Pyar Ka Safar","Mere Saath","Nazm-e-ishq","Aaja Re","Sajni - Arijit",
-      "Kole Bheja","Kaaton","Jo Tum Mere Ho","Deewaniyat (Title Track)",
-      "Teri Baaton (Remix)","Love Aaj Kal 2025","Dilbaron Ka","Pehla Nasha 2025",
-      "Naina 2025","Aaja Nachle 2025","Mohabbat Ke Rang","Sun Le","Rang De",
-      "Saathiya 2025","Yaariyan 2025","Mast Jawani","Khamoshiyan 2025","Ranjhana 2025",
-      "Sitaron Ke Sang","Pal 2025","Kahani 2025","Tum Mile 2025","Aasmaan 2025",
-      "Raat Ki Rani","Le Chalo","Dil Dhadakne Do 2025","Chaand 2025","Zindagi 2025",
-      "Kuch Is Tarah 2025","Dhun (Extended)","Tum Ho Toh (Remix)","Saansein",
-      "Bheege Hont 2025","Yaad","Ishq Ka Safar","Raat Aur Din","Pal Do Pal",
-      "Dil Ka Sahara","Humsafar 2025","Bahaar 2025","Khwabon Ki Raat","Aankhon Mein",
-      "Raat Bhar (Acoustic)","Tum Mile (Acoustic)","Pardesiya (Remix)"
-    ];
-    while(songs.length<100) songs.push("Latest Track " + (songs.length+1));
-    const ol = document.getElementById("songList");
-    songs.forEach(t => {
-      const li = document.createElement("li");
-      li.textContent = t;
-      ol.appendChild(li);
-    });
-  </script>
+<!-- 9 -->
+<div class="card">
+<h3>9. Tere Vaaste</h3>
+<iframe src="https://www.youtube.com/embed/4VaqA-5aQTM" allowfullscreen></iframe>
+</div>
+
+<!-- 10 -->
+<div class="card">
+<h3>10. Dil Diyan Gallan</h3>
+<iframe src="https://www.youtube.com/embed/SAcpESN_Fk4" allowfullscreen></iframe>
+</div>
+
+<!-- 11 -->
+<div class="card">
+<h3>11. Chaleya</h3>
+<iframe src="https://www.youtube.com/embed/HrNRB9Io2Ng" allowfullscreen></iframe>
+</div>
+
+<!-- 12 -->
+<div class="card">
+<h3>12. O Maahi</h3>
+<iframe src="https://www.youtube.com/embed/IrMdK9Z8q0o" allowfullscreen></iframe>
+</div>
+
+<!-- 13 -->
+<div class="card">
+<h3>13. Agar Tum Saath Ho</h3>
+<iframe src="https://www.youtube.com/embed/sK7riqg2mr4" allowfullscreen></iframe>
+</div>
+
+<!-- 14 -->
+<div class="card">
+<h3>14. Samjhawan</h3>
+<iframe src="https://www.youtube.com/embed/oWKgpB2zpgw" allowfullscreen></iframe>
+</div>
+
+<!-- 15 -->
+<div class="card">
+<h3>15. Hawayein</h3>
+<iframe src="https://www.youtube.com/embed/cgHdM7X7d8E" allowfullscreen></iframe>
+</div>
+
+<!-- 16 -->
+<div class="card">
+<h3>16. Qaafirana</h3>
+<iframe src="https://www.youtube.com/embed/8F4IpXSH5K4" allowfullscreen></iframe>
+</div>
+
+<!-- 17 -->
+<div class="card">
+<h3>17. Raanjhana</h3>
+<iframe src="https://www.youtube.com/embed/qFeZzjY6F7Y" allowfullscreen></iframe>
+</div>
+
+<!-- 18 -->
+<div class="card">
+<h3>18. Pal</h3>
+<iframe src="https://www.youtube.com/embed/5mQxmjz9gaI" allowfullscreen></iframe>
+</div>
+
+<!-- 19 -->
+<div class="card">
+<h3>19. Hasi Ban Gaye</h3>
+<iframe src="https://www.youtube.com/embed/tlM1AJ4rW24" allowfullscreen></iframe>
+</div>
+
+<!-- 20 -->
+<div class="card">
+<h3>20. Kaise Hua</h3>
+<iframe src="https://www.youtube.com/embed/6Y8nPmGUdTg" allowfullscreen></iframe>
+</div>
+
+<!-- 21 -->
+<div class="card">
+<h3>21. Jhoome Jo Pathaan</h3>
+<iframe src="https://www.youtube.com/embed/YxWlaYCA8MU" allowfullscreen></iframe>
+</div>
+
+<!-- 22 -->
+<div class="card">
+<h3>22. Saami Saami</h3>
+<iframe src="https://www.youtube.com/embed/qO4Yx8fUHI8" allowfullscreen></iframe>
+</div>
+
+<!-- 23 -->
+<div class="card">
+<h3>23. Srivalli</h3>
+<iframe src="https://www.youtube.com/embed/iN3K-Y0bFYM" allowfullscreen></iframe>
+</div>
+
+<!-- 24 -->
+<div class="card">
+<h3>24. Pasoori</h3>
+<iframe src="https://www.youtube.com/embed/5Eqb_-j3FDA" allowfullscreen></iframe>
+</div>
+
+<!-- 25 -->
+<div class="card">
+<h3>25. Heeriye</h3>
+<iframe src="https://www.youtube.com/embed/MXW0bx_Ouqk" allowfullscreen></iframe>
+</div>
+
+<!-- 26 -->
+<div class="card">
+<h3>26. Bekhayali</h3>
+<iframe src="https://www.youtube.com/embed/8gF6lwHYYoA" allowfullscreen></iframe>
+</div>
+
+<!-- 27 -->
+<div class="card">
+<h3>27. Tujhe Kitna Chahne Lage</h3>
+<iframe src="https://www.youtube.com/embed/naPpwrvKz00" allowfullscreen></iframe>
+</div>
+
+<!-- 28 -->
+<div class="card">
+<h3>28. Sun Saathiya</h3>
+<iframe src="https://www.youtube.com/embed/VhB7v6kEqiM" allowfullscreen></iframe>
+</div>
+
+<!-- 29 -->
+<div class="card">
+<h3>29. Jeena Jeena</h3>
+<iframe src="https://www.youtube.com/embed/CIx0Q3bV_lI" allowfullscreen></iframe>
+</div>
+
+<!-- 30 -->
+<div class="card">
+<h3>30. Muskurane</h3>
+<iframe src="https://www.youtube.com/embed/pYGawW6vvV0" allowfullscreen></iframe>
+</div>
+
+</div>
 
 </body>
 </html>
+<!-- 31 -->
+<div class="card">
+<h3>31. Gerua</h3>
+<iframe src="https://www.youtube.com/embed/AEIVhBS6baE" allowfullscreen></iframe>
+</div>
+
+<!-- 32 -->
+<div class="card">
+<h3>32. Janam Janam</h3>
+<iframe src="https://www.youtube.com/embed/pSudEWBAYRE" allowfullscreen></iframe>
+</div>
+
+<!-- 33 -->
+<div class="card">
+<h3>33. Bulleya</h3>
+<iframe src="https://www.youtube.com/embed/NUsoVlDFqZg" allowfullscreen></iframe>
+</div>
+
+<!-- 34 -->
+<div class="card">
+<h3>34. Zaalima</h3>
+<iframe src="https://www.youtube.com/embed/hhdSyFWhKQY" allowfullscreen></iframe>
+</div>
+
+<!-- 35 -->
+<div class="card">
+<h3>35. Hookah Bar</h3>
+<iframe src="https://www.youtube.com/embed/aaCqroG-8Ts" allowfullscreen></iframe>
+</div>
+
+<!-- 36 -->
+<div class="card">
+<h3>36. Duniyaa</h3>
+<iframe src="https://www.youtube.com/embed/8iZTb5Gx9kg" allowfullscreen></iframe>
+</div>
+
+<!-- 37 -->
+<div class="card">
+<h3>37. Deva Deva</h3>
+<iframe src="https://www.youtube.com/embed/Gy4KBV-XgZk" allowfullscreen></iframe>
+</div>
+
+<!-- 38 -->
+<div class="card">
+<h3>38. Tum Se</h3>
+<iframe src="https://www.youtube.com/embed/k6tDoyA0zb4" allowfullscreen></iframe>
+</div>
+
+<!-- 39 -->
+<div class="card">
+<h3>39. Param Sundari</h3>
+<iframe src="https://www.youtube.com/embed/iN3dFjO5lO4" allowfullscreen></iframe>
+</div>
+
+<!-- 40 -->
+<div class="card">
+<h3>40. Aaj Se Teri</h3>
+<iframe src="https://www.youtube.com/embed/jBz5LTBmP6k" allowfullscreen></iframe>
+</div>
+
+<!-- 41 -->
+<div class="card">
+<h3>41. Nacho Nacho / Naatu Naatu</h3>
+<iframe src="https://www.youtube.com/embed/OsU0CGZoV8E" allowfullscreen></iframe>
+</div>
+
+<!-- 42 -->
+<div class="card">
+<h3>42. Malang (Title Track)</h3>
+<iframe src="https://www.youtube.com/embed/csN9ZItBPNg" allowfullscreen></iframe>
+</div>
+
+<!-- 43 -->
+<div class="card">
+<h3>43. Tu Hi Yaar Mera</h3>
+<iframe src="https://www.youtube.com/embed/rDE5i6UEZQo" allowfullscreen></iframe>
+</div>
+
+<!-- 44 -->
+<div class="card">
+<h3>44. Raabta (Title Song)</h3>
+<iframe src="https://www.youtube.com/embed/h0MGIdu6V4g" allowfullscreen></iframe>
+</div>
+
+<!-- 45 -->
+<div class="card">
+<h3>45. Kabira</h3>
+<iframe src="https://www.youtube.com/embed/jHNNMj5bNQw" allowfullscreen></iframe>
+</div>
+
+<!-- 46 -->
+<div class="card">
+<h3>46. Suno Na Sangemarmar</h3>
+<iframe src="https://www.youtube.com/embed/k3_5pMxoUEU" allowfullscreen></iframe>
+</div>
+
+<!-- 47 -->
+<div class="card">
+<h3>47. Hawaa Banke</h3>
+<iframe src="https://www.youtube.com/embed/5V7b8wCzjKk" allowfullscreen></iframe>
+</div>
+
+<!-- 48 -->
+<div class="card">
+<h3>48. Humnava Mere</h3>
+<iframe src="https://www.youtube.com/embed/Ro9y7Hh0sy8" allowfullscreen></iframe>
+</div>
+
+<!-- 49 -->
+<div class="card">
+<h3>49. Kya Mujhe Pyar Hai</h3>
+<iframe src="https://www.youtube.com/embed/mFvdcE3vKkk" allowfullscreen></iframe>
+</div>
+
+<!-- 50 -->
+<div class="card">
+<h3>50. Tujhe Bhula Diya</h3>
+<iframe src="https://www.youtube.com/embed/LbWDTG0cJwY" allowfullscreen></iframe>
+</div>
+
+<!-- 51 -->
+<div class="card">
+<h3>51. Mast Magan</h3>
+<iframe src="https://www.youtube.com/embed/Wg1r5xHZNPM" allowfullscreen></iframe>
+</div>
+
+<!-- 52 -->
+<div class="card">
+<h3>52. Enna Sona</h3>
+<iframe src="https://www.youtube.com/embed/Q3e7z5maA44" allowfullscreen></iframe>
+</div>
+
+<!-- 53 -->
+<div class="card">
+<h3>53. Dil Cheez Tujhe Dedi</h3>
+<iframe src="https://www.youtube.com/embed/B7xai5u_tnk" allowfullscreen></iframe>
+</div>
+
+<!-- 54 -->
+<div class="card">
+<h3>54. First Class</h3>
+<iframe src="https://www.youtube.com/embed/GAV2Tz8z0go" allowfullscreen></iframe>
+</div>
+
+<!-- 55 -->
+<div class="card">
+<h3>55. Tareefan</h3>
+<iframe src="https://www.youtube.com/embed/Mbd5zH3suwU" allowfullscreen></iframe>
+</div>
+
+<!-- 56 -->
+<div class="card">
+<h3>56. Ve Maahi</h3>
+<iframe src="https://www.youtube.com/embed/bYI5c7TFAMc" allowfullscreen></iframe>
+</div>
+
+<!-- 57 -->
+<div class="card">
+<h3>57. Kinna Sona</h3>
+<iframe src="https://www.youtube.com/embed/5Z8ctGqu6B4" allowfullscreen></iframe>
+</div>
+
+<!-- 58 -->
+<div class="card">
+<h3>58. Pal Pal Dil Ke Paas</h3>
+<iframe src="https://www.youtube.com/embed/AX6OrbgS8lI" allowfullscreen></iframe>
+</div>
+
+<!-- 59 -->
+<div class="card">
+<h3>59. Tum Jo Aaye</h3>
+<iframe src="https://www.youtube.com/embed/B_iWl2HClvE" allowfullscreen></iframe>
+</div>
+
+<!-- 60 -->
+<div class="card">
+<h3>60. Jeene Laga Hoon</h3>
+<iframe src="https://www.youtube.com/embed/-xjAHn9LZyE" allowfullscreen></iframe>
+</div>
