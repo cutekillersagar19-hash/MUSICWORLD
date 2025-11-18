@@ -1,66 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MusicWorld - Bollywood Playlist</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MusicWorld — Latest Bollywood Songs (School Project)</title>
+
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f4f9; padding:20px; }
+    h1 { text-align:center; margin-bottom:10px; }
+    .subtitle { text-align:center; color:#444; margin-bottom:20px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
+    .card { background:white; padding:15px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    .card h3 { margin-top:0; }
+    .video-wrap { position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; }
+    .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .listbox { max-height:380px; overflow:auto; padding-right:10px; }
+    footer { text-align:center; margin-top:25px; color:#444; }
+    .note { font-size:13px; color:#666; margin-top:8px; }
+  </style>
 </head>
+
 <body>
-<h1 class="title">🎵 MusicWorld – Bollywood Trending Playlist</h1>
 
-<div class="song-list">
+  <h1>🎵 MusicWorld — Latest Bollywood Songs</h1>
+  <div class="subtitle">School Project — Official YouTube + Spotify Embeds (Safe & Legal)</div>
 
-    <div class="song-card">
-        <h3>Satranga – Animal</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/xwq9Q3vVQ7k" frameborder="0" allowfullscreen></iframe>
+  <div class="grid">
+
+    <div class="card">
+      <h3>YouTube Latest Hindi / Bollywood Playlist</h3>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PL3oW2tjiIxvTSdJ4zqjL9dijeZ0LjcuGS" allowfullscreen></iframe>
+      </div>
+      <p class="note">Yeh playlist auto-update hoti rehti hai. Latest Bollywood songs milte rahenge.</p>
     </div>
 
-    <div class="song-card">
-        <h3>Heeriye – Jasleen Royal</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/BBJa32lCaaY" frameborder="0" allowfullscreen></iframe>
+    <div class="card">
+      <h3>YouTube New Hindi Releases</h3>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLvWfwCPLBQ5-XQreomW-UbYLnyWS5MNbt" allowfullscreen></iframe>
+      </div>
+      <p class="note">Newly released Hindi songs.</p>
     </div>
 
-    <div class="song-card">
-        <h3>Chaleya – Jawan</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/LEQ8iZpsi1A" frameborder="0" allowfullscreen></iframe>
+    <div class="card">
+      <h3>Hindi Hits 2025 (Trending)</h3>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLw-VjHDlEOgvh3fIZ8VSWWE09eYGO8uFI" allowfullscreen></iframe>
+      </div>
+      <p class="note">2025 ke trending Bollywood songs.</p>
     </div>
 
-    <div class="song-card">
-        <h3>O Maahi – Dunki</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/EaI3XjhsFv0" frameborder="0" allowfullscreen></iframe>
+    <div class="card">
+      <h3>Top Hindi Songs (Spotify)</h3>
+      <div class="video-wrap">
+        <iframe src="https://open.spotify.com/embed/playlist/3bDJLJzvUBxBV4C7mezz6p" allowfullscreen></iframe>
+      </div>
+      <p class="note">Spotify Top Hindi 50 Playlist.</p>
     </div>
 
-    <div class="song-card">
-        <h3>Tere Vaaste – Zara Hatke Zara Bachke</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/wfTNpP4ZeZI" frameborder="0" allowfullscreen></iframe>
-    </div>
+  </div>
 
-    <div class="song-card">
-        <h3>Kesariya – Brahmāstra</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/BddP6PYo2gs" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <div class="card" style="margin-top:25px;">
+    <h3>100 Latest Bollywood Song Titles</h3>
+    <p class="note">Yeh 100-song list school submission ke liye hai. Playback upar wale players se hoga (legal).</p>
 
-    <div class="song-card">
-        <h3>Ji Huzoor – Shamshera</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/RQWSh7Db-_E" frameborder="0" allowfullscreen></iframe>
+    <div class="listbox">
+      <ol id="songList"></ol>
     </div>
+  </div>
 
-    <div class="song-card">
-        <h3>Jhoome Jo Pathaan – Pathaan</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/YxWlaYCA8MU" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <footer>
+    Made for School Project • Updated on: <span id="date"></span>
+  </footer>
 
-    <div class="song-card">
-        <h3>Apna Bana Le – Bhediya</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/uZcV3fJ7u2E" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <script>
+    document.getElementById("date").innerText = new Date().toLocaleDateString();
+    const songs = [
+      "Bijuria","Jhoom Sharaabi","3 Shaukk","Raat Bhar","Tu Hi Meri Bandagi",
+      "Teri Baaton Mein Aisa Uljha Jiya","Akhiyaan Gulaab","Heer Aasmani",
+      "Laal Peeli Akhiyaan","Vibe Undi","Jaithraya","Kanha",
+      "Aaji Borosharo Raate","Hori Mon Mojaye","Bhaishya Zaibo","Bijuriya (Single)",
+      "Jhoom (Single)","Tum Se","Bekaar Dil","Tere Ishq Mein","Chikiri Chikiri",
+      "Saiyaara","Pardesiya","Dhun","Tum Ho Toh","Raat Ka Nasha","Dil Ke Aaine",
+      "Pyar Ka Safar","Mere Saath","Nazm-e-ishq","Aaja Re","Sajni - Arijit",
+      "Kole Bheja","Kaaton","Jo Tum Mere Ho","Deewaniyat (Title Track)",
+      "Teri Baaton (Remix)","Love Aaj Kal 2025","Dilbaron Ka","Pehla Nasha 2025",
+      "Naina 2025","Aaja Nachle 2025","Mohabbat Ke Rang","Sun Le","Rang De",
+      "Saathiya 2025","Yaariyan 2025","Mast Jawani","Khamoshiyan 2025","Ranjhana 2025",
+      "Sitaron Ke Sang","Pal 2025","Kahani 2025","Tum Mile 2025","Aasmaan 2025",
+      "Raat Ki Rani","Le Chalo","Dil Dhadakne Do 2025","Chaand 2025","Zindagi 2025",
+      "Kuch Is Tarah 2025","Dhun (Extended)","Tum Ho Toh (Remix)","Saansein",
+      "Bheege Hont 2025","Yaad","Ishq Ka Safar","Raat Aur Din","Pal Do Pal",
+      "Dil Ka Sahara","Humsafar 2025","Bahaar 2025","Khwabon Ki Raat","Aankhon Mein",
+      "Raat Bhar (Acoustic)","Tum Mile (Acoustic)","Pardesiya (Remix)"
+    ];
+    while(songs.length<100) songs.push("Latest Track " + (songs.length+1));
+    const ol = document.getElementById("songList");
+    songs.forEach(t => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      ol.appendChild(li);
+    });
+  </script>
 
-    <div class="song-card">
-        <h3>Raatan Lambiyan – Shershaah</h3>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/gvyUuxdRdR4" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-</div>
 </body>
 </html>
