@@ -1,27 +1,35 @@
-/* Download Button Styling */
-.download-section {
-    text-align: center;
-    margin: 40px 0;
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+    margin: 0;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
 }
 
-.download-button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #4CAF50; /* Green color */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.title {
+    text-align: center;
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px #333;
 }
 
-.download-button:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
+.song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.song-card {
+    background: #ffffffcc;
+    padding: 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.song-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 20px;
 }
