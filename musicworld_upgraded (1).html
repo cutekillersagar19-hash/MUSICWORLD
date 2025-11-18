@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MusicWorld ULTRA</title>
+<style>
+ body {font-family: Arial, sans-serif; background:#050505; color:white; margin:0; padding:0;}
+ header {background:#0f0f0f; padding:25px; text-align:center; font-size:32px; font-weight:bold; letter-spacing:2px; color:#00eaff; text-shadow:0 0 12px #00eaff;}
+ .container {padding:20px;}
+ .section {margin-bottom:30px; background:#111; padding:20px; border-radius:14px; box-shadow:0 0 12px #00eaff44; transition:0.3s;}
+ .section:hover {box-shadow:0 0 22px #00eaff88;}
+ h2 {margin-top:0; color:#00eaff; text-shadow:0 0 8px #00eaff;}
+ .file-upload {background:#222; padding:18px; border-radius:10px; text-align:center; cursor:pointer; border:2px dashed #00eaff; transition:0.3s;}
+ .file-upload:hover {background:#00eaff22;}
+ #playlist li {padding:12px; margin:6px 0; background:#1a1a1a; border-radius:8px; cursor:pointer; transition:0.3s;}
+ #playlist li:hover {background:#00eaff33;}
+ audio {width:100%; margin-top:10px;}
+ input, button {padding:12px; border-radius:8px; border:none; outline:none;}
+ button {background:#00eaff; color:#000; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.3s;}
+ button:hover {background:#0099bb;}
+ iframe {border-radius:10px; margin-top:10px;}
+ .logo {display:block; margin:auto; width:140px; filter:drop-shadow(0 0 6px #00eaff);} 
+ #visualizer {width:100%; height:120px; background:#000; margin-top:20px; border-radius:10px; box-shadow:0 0 10px #00eaff66;}
+.music-player{position:fixed;bottom:0;left:0;right:0;background:#111;color:#fff;padding:10px;display:flex;align-items:center;gap:10px}.music-player img{width:50px;height:50px;border-radius:8px}.player-info{flex:1}
+</style>
+</head>
+<body>
+<header>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Musical_notes.svg" class="logo" />
+MusicWorld ULTRA
+</header>
+<div class="container">
+
+<div class="section">
+<h2>🎧 Music Categories</h2>
+<button onclick="showCategory('pop')">Pop</button>
+<button onclick="showCategory('rock')">Rock</button>
+<button onclick="showCategory('lofi')">Lo-Fi</button>
+<ul id="categoryList"></ul>
+</div>
+
+<div class="section">
+<h2>🌗 Theme Mode</h2>
+<button onclick="toggleTheme()">Toggle Dark / Light Mode</button>
+</div>
+
+<div class="section">
+<h2>🎵 Upload Local Music</h2>
+<div class="file-upload" onclick="document.getElementById('fileInput').click()">Tap to Upload Songs</div>
+<input type="file" id="fileInput" accept="audio/*" multiple style="display:none;" />
+<ul id="playlist"></ul>
+<audio id="audio" controls></audio>
+<canvas id="visualizer"></canvas>
+</div>
+
+<div class="section">
+<h2>📺 Add YouTube / SoundCloud Track</h2>
+<input id="embedUrl" placeholder="Paste URL here" style="width:80%" />
+<button onclick="addEmbed()">Add Track</button>
+<div id="embeds"></div>
+</div>
+
+<div class="section">
+<h2>💾 Save / Load Playlist</h2>
+<button onclick="savePlaylist()">Save Playlist</button>
+<button onclick="loadPlaylist()">Load Playlist</button>
+<p id="status"></p>
+</div>
+
+</div>
+
+<script>
+const fileInput=document.getElementById('fileInput');
+const playlist=document.getElementById('playlist');
+const audio=document.getElementById('audio');
+const canvas=document.getElementById('visualizer');
+const ctx=canvas.getContext('2d');
+let currentList=[
+ {name:"Demo Song 1 - Adventure", url:"https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav"},
+ {name:"Demo Song 2 - Piano", url:"https://www2.cs.uic.edu/~i101/SoundFiles/PinkPanther30.wav"},
+ {name:"Demo Song 3 - Classical", url:"https://www2.cs.uic.edu/~i101/SoundFiles/ImperialMarch60.wav"}
+];
+let audioCtx, analyser;
+
+function startVisualizer(){
+ audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+ const src=audioCtx.createMediaElementSource(audio);
+ analyser=audioCtx.createAnalyser();
+ src.connect(analyser);
+ analyser.connect(audioCtx.destination);
+ analyser.fftSize=256;
+ let bufferLength=analyser.frequencyBinCount;
+ let dataArray=new Uint8Array(bufferLength);
+
+ function animate(){
+  requestAnimationFrame(animate);
+  analyser.getByteFrequencyData(dataArray);
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  let barWidth=(canvas.width/bufferLength)*2.5;
+  let x=0;
+  for(let i=0;i<bufferLength;i++){
+   let barHeight=dataArray[i];
+   ctx.fillStyle='rgb('+(barHeight+100)+',50,200)';
+   ctx.fillRect(x,canvas.height-barHeight,barWidth,barHeight);
+   x+=barWidth+1;
+  }
+ }
+ animate();
+}
+
+audio.onplay=()=>{ if(!audioCtx) startVisualizer(); };
+
+fileInput.onchange=()=>{
+ playlist.innerHTML='';
+ currentList=[];
+ [...fileInput.files].forEach(f=>{
+  const url=URL.createObjectURL(f);
+  currentList.push({name:f.name, url:url});
+  const li=document.createElement('li');
+  li.textContent=f.name;
+  li.onclick=()=>audio.src=url;
+  playlist.appendChild(li);
+ });
+ saveLocal();
+};
+
+function addEmbed(){
+ const url=document.getElementById('embedUrl').value;
+ if(!url) return;
+ let code="";
+ if(url.includes("youtube")){
+  let id=url.split("v=")[1]?.split("&")[0];
+  code=`<iframe width='360' height='220' src='https://www.youtube.com/embed/${id}'></iframe>`;
+ } else if(url.includes("soundcloud")){
+  code=`<iframe width='360' height='220' src='https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}'></iframe>`;
+ }
+ document.getElementById('embeds').innerHTML += code;
+}
+
+function saveLocal(){ localStorage.setItem("musicworld", JSON.stringify(currentList)); }
+function savePlaylist(){ saveLocal(); document.getElementById("status").innerText="Playlist Saved!"; }
+
+function loadPlaylist(){
+ let data=localStorage.getItem("musicworld");
+ if(!data){document.getElementById("status").innerText="No saved playlist found";return;}
+ playlist.innerHTML='';
+ currentList=JSON.parse(data);
+ currentList.forEach(t=>{
+  const li=document.createElement('li');
+  li.textContent=t.name;
+  li.onclick=()=>audio.src=t.url;
+  playlist.appendChild(li);
+ });
+ document.getElementById("status").innerText="Playlist Loaded!";
+}
+// Music Categories Feature
+function showCategory(type){
+ const list=document.getElementById('categoryList');
+ if(!list) return;
+ list.innerHTML="";
+ const songs={ pop:['POP Song 1','POP Song 2'], rock:['ROCK Song 1','ROCK Song 2'], lofi:['LOFI Beat 1','LOFI Beat 2'] };
+ (songs[type]||[]).forEach(s=>{
+  let li=document.createElement('li');
+  li.textContent=s;
+  list.appendChild(li);
+ });
+}
+
+// Theme Toggle
+function toggleTheme(){
+ document.body.classList.toggle('light');
+}
+// Music Player Logic
+const audio=document.getElementById('audio-player');
+function playSong(song){
+ document.getElementById('player-title').textContent=song.title;
+ document.getElementById('player-artist').textContent=song.artist;
+ document.getElementById('player-cover').src=song.cover;
+ audio.src=song.file;
+ audio.play();
+}
+</script>
+  <!-- Music Player -->
+  <div class="music-player">
+    <img id="player-cover" src="" alt="Cover" />
+    <div class="player-info">
+      <h3 id="player-title">Select a song</h3>
+      <p id="player-artist"></p>
+      <audio id="audio-player" controls></audio>
+    </div>
+  </div>
+</body>
+</html>
