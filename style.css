@@ -1,0 +1,27 @@
+/* Download Button Styling */
+.download-section {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #4CAF50; /* Green color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.download-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
