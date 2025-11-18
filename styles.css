@@ -1,2 +1,18 @@
-body{font-family:sans-serif;padding:20px;background:#111;color:#fff}
-.player, .embed{margin-top:20px}
+
+body {font-family: Arial, sans-serif; background:#050505; color:white; margin:0; padding:0;}
+header {background:#0f0f0f; padding:25px; text-align:center; font-size:32px; font-weight:bold; letter-spacing:2px; color:#00eaff; text-shadow:0 0 12px #00eaff;}
+.container {padding:20px;}
+.section {margin-bottom:30px; background:#111; padding:20px; border-radius:14px; box-shadow:0 0 12px #00eaff44; transition:0.3s;}
+.section:hover {box-shadow:0 0 22px #00eaff88;}
+h2 {margin-top:0; color:#00eaff; text-shadow:0 0 8px #00eaff;}
+.file-upload {background:#222; padding:18px; border-radius:10px; text-align:center; cursor:pointer; border:2px dashed #00eaff; transition:0.3s;}
+.file-upload:hover {background:#00eaff22;}
+#playlist li {padding:12px; margin:6px 0; background:#1a1a1a; border-radius:8px; cursor:pointer; transition:0.3s;}
+#playlist li:hover {background:#00eaff33;}
+audio {width:100%; margin-top:10px;}
+input, button {padding:12px; border-radius:8px; border:none; outline:none;}
+button {background:#00eaff; color:#000; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.3s;}
+button:hover {background:#0099bb;}
+iframe {border-radius:10px; margin-top:10px;}
+.logo {display:block; margin:auto; width:140px; filter:drop-shadow(0 0 6px #00eaff);} 
+#visualizer {width:100%; height:120px; background:#000; margin-top:20px; border-radius:10px; box-shadow:0 0 10px #00eaff66;}
