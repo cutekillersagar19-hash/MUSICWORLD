@@ -1,141 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MusicWorld — 100 Bollywood Songs (Playable)</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>MusicWorld - 100 Bollywood Songs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #111;
+            color: white;
+        }
+        header {
+            background: #ff0059;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            background: #1c1c1c;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px black;
+        }
+        h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #ff0099;
+        }
+        iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #aaa;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar">
-  <div class="logo">🎵 MusicWorld</div>
-  <div class="note">School Project — Click any card to play (YouTube embeds)</div>
-</nav>
 
-<header class="hero">
-  <h1>100 Bollywood Songs — Playable</h1>
-  <p class="sub">Official streaming via YouTube search embeds (legal). No MP3s hosted.</p>
-</header>
+<header>🎵 MusicWorld - 100 Bollywood Songs 🎵</header>
 
-<main class="container">
-  <div class="song-grid">
-    <!-- SONG CARDS: 100 real titles -->
-    <article class="card"><h3>1. Tauba Tauba</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tauba+Tauba" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>2. Akhiyaan Gulaab</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Akhiyaan+Gulaab" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>3. Aaj Ki Raat</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Aaj+Ki+Raat" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>4. Dhun</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dhun" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>5. Tere Ishk Mein</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tere+Ishk+Mein" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>6. Sorry Bol</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Sorry+Bol" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>7. Nasha</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Nasha" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>8. Uyi Amma</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Uyi+Amma" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>9. Dil Ke Taj Mahal Mein</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dil+Ke+Taj+Mahal+Mein" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>10. Chaleya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Chaleya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
+<div class="song-grid">
 
-    <article class="card"><h3>11. Taras</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Taras" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>12. Bhool Bhulaiyaa 3 Title Track</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Bhool+Bhulaiyaa+3+Title+Track" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>13. Haan Ke Haan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Haan+Ke+Haan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>14. Husn (Anuv Jain)</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Husn+Anuv+Jain" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>15. Ishq Mitaye</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ishq+Mitaye" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>16. Vida Karo</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Vida+Karo" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>17. Raanjhan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Raanjhan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>18. Qaafirana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Qaafirana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>19. Vinveli Nayaga</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Vinveli+Nayaga" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>20. Khwabon Ka Sheher</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Khwabon+Ka+Sheher" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>21. Tauba Tauba Remix</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tauba+Tauba+Remix" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>22. Sajni</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Sajni" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>23. Aayi Nai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Aayi+Nai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>24. Taras (Club Mix)</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Taras+Club+Mix" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>25. Le Gayi</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Le+Gayi" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>26. Falak Tak</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Falak+Tak" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>27. Jhoom Barabar Jhoom</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Jhoom+Barabar+Jhoom" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>28. O Re Piya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=O+Re+Piya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>29. Moh Moh Ke Dhaage</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Moh+Moh+Ke+Dhaage" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>30. Mere Yaar Ki Shaadi Hai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Mere+Yaar+Ki+Shaadi+Hai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>31. Tujh Mein Rab Dikhta Hai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tujh+Mein+Rab+Dikhta+Hai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>32. Holi Ke Rang Ma</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Holi+Ke+Rang+Ma" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>33. Koi Ladki Hai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Koi+Ladki+Hai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>34. Bulleya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Bulleya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>35. Fitoor</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Fitoor" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>36. Dard Karaara</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dard+Karaara" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>37. Sharara</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Sharara" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>38. Ruaan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ruaan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>39. Pareshaan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Pareshaan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>40. Sajde</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Sajde" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>41. Dilbar</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dilbar" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>42. Akeli Laila</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Akeli+Laila" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>43. Guzaara</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Guzaara" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>44. Marjaana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Marjaana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>45. Bahli Sonhi</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Bahli+Sonhi" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>46. Aankhon Mein</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Aankhon+Mein" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>47. Tujhe Kitna Chahne Lage</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tujhe+Kitna+Chahne+Lage" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>48. Bekhayali</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Bekhayali" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>49. Ae Dil Hai Mushkil</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ae+Dil+Hai+Mushkil" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>50. Apna Bana Le</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Apna+Bana+Le" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>51. Kesariya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Kesariya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>52. Jhoome Jo Pathaan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Jhoome+Jo+Pathaan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>53. Raatan Lambiyan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Raatan+Lambiyan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>54. Kaise Hua</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Kaise+Hua" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>55. Nain Matakka</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Nain+Matakka" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>56. Hasi Ban Gaye</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Hasi+Ban+Gaye" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>57. Samjhawan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Samjhawan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>58. Dil Ko Karaar Aaya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dil+Ko+Karaar+Aaya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>59. Thoda Thoda Pyaar Hua</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Thoda+Thoda+Pyaar+Hua" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>60. Bachpan Ka Pyaar</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Bachpan+Ka+Pyaar" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>61. Jai Jai Shivshankar</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Jai+Jai+Shivshankar" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>62. Ghungroo</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ghungroo" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>63. Pyaar Hota Kayi Baar Hai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Pyaar+Hota+Kayi+Baar+Hai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>64. Tum Se</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tum+Se" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>65. Pal</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Pal" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>66. Ranjhana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ranjhana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>67. Khamoshiyan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Khamoshiyan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>68. Saanson Ka Maala</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Saanson+Ka+Maala" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>69. Chale Aana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Chale+Aana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>70. Rahogi Meri</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Rahogi+Meri" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>71. Main Rang Sharbaton Ka</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Main+Rang+Sharbaton+Ka" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>72. Baarish Mein Tum</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Baarish+Mein+Tum" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>73. Aayat</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Aayat" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>74. Ishq Sufiyana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ishq+Sufiyana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>75. Agar Tum Saath Ho</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Agar+Tum+Saath+Ho" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>76. Raabta</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Raabta" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>77. Kabira</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Kabira" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>78. Tere Bina</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tere+Bina" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>79. Muskurane</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Muskurane" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>80. Tum Hi Ho</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tum+Hi+Ho" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>81. Phir Le Aaya Dil</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Phir+Le+Aaya+Dil" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>82. Tera Ban Jaunga</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tera+Ban+Jaunga" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>83. Dil Diyan Gallan</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dil+Diyan+Gallan" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>84. Tu Jaane Na</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tu+Jaane+Na" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>85. Tujhko Jo Paaya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tujhko+Jo+Paaya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>86. Channa Mereya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Channa+Mereya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>87. Zaalima</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Zaalima" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>88. Ik Vaari Aa</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Ik+Vaari+Aa" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>89. Sanam Re</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Sanam+Re" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>90. Tum Mile (Reprise)</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tum+Mile+Reprise" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-    <article class="card"><h3>91. Dil De Diya Hai</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dil+De+Diya+Hai" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>92. Tum Ho Toh</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tum+Ho+Toh" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>93. Shayarana</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Shayarana" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>94. Humsafar</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Humsafar" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>95. Tere Vaaste</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Tere+Vaaste" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>96. Leja Leja Re</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Leja+Leja+Re" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>97. Mohabbat Barsa Dena</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Mohabbat+Barsa+Dena" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>98. Khairiyat</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Khairiyat" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>99. Yeh Fitoor Mera</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Yeh+Fitoor+Mera" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-    <article class="card"><h3>100. Dil Na Jaaneya</h3><div class="video-wrap"><iframe src="https://www.youtube.com/embed?listType=search&list=Dil+Na+Jaaneya" allow="autoplay; encrypted-media" allowfullscreen></iframe></div></article>
-
-  </div>
-</main>
-
-<footer>
-  <p>© 2025 MusicWorld — School Project</p>
-</footer>
-
-</body>
-</html>
+<!-- Songs 1 to 100 -->
+<div class="card"><h3>1. Lut Gaye</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Lut+Gaye"></iframe></div>
+<div class="card"><h3>2. Raataan Lambiyan</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Raataan+Lambiyan"></iframe></div>
+<div class="card"><h3>3. Pachtaoge</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Pachtaoge"></iframe></div>
+<div class="card"><h3>4. Tum Hi Aana</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Tum+Hi+Aana"></iframe></div>
+<div class="card"><h3>5. Kya Baat Ay</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Kya+Baat+Ay"></iframe></div>
+<div class="card"><h3>6. Kusu Kusu</h3><iframe src="https://www.youtube.com/embed?listType=search&list=Kusu+Kusu"></iframe></div>
+<div class="card"><h3>7. Dil
